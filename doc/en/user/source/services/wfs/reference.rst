@@ -101,7 +101,7 @@ The **GetCapabilities** operation is a request to a WFS server for a list of the
 To issue a GET request using HTTP::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=1.1.0&
      request=GetCapabilities
 	  
@@ -197,14 +197,14 @@ The parameters for DescribeFeatureType are:
 To return a list of feature types, the GET request would be as follows. This request will return the list of feature types, sorted by namespace::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=DescribeFeatureType
 
 To list information about a specific feature type called ``namespace:featuretype``, the GET request would be::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=DescribeFeatureType&
      typeNames=namespace:featuretype
@@ -219,7 +219,7 @@ The **GetFeature** operation returns a selection of features from the data sourc
 This request will execute a GetFeature request for a given layer ``namespace:featuretype``::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype
@@ -227,7 +227,7 @@ This request will execute a GetFeature request for a given layer ``namespace:fea
 Executing this command will return the geometries for all features in given a feature type, potentially a large amount of data. To limit the output you can restrict the GetFeature request to a single feature by including an additional parameter, ``featureID`` and providing the ID of a specific feature. In this case, the GET request would be::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -236,7 +236,7 @@ Executing this command will return the geometries for all features in given a fe
 If the ID of the feature is unknown but you still want to limit the amount of features returned, use the ``count`` parameter for WFS 2.0.0 or the ``maxFeatures`` parameter for earlier WFS versions. In the examples below, ``N`` represents the number of features to return::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -245,7 +245,7 @@ If the ID of the feature is unknown but you still want to limit the amount of fe
 :: 
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=1.1.0&
      request=GetFeature&
      typeName=namespace:featuretype&
@@ -254,7 +254,7 @@ If the ID of the feature is unknown but you still want to limit the amount of fe
 Exactly which N features will be returned depends in the internal structure of the data. However, you can sort the returned selection based on an attribute value. In the following example, an attribute is included in the request using the ``sortBy=attribute`` parameter (replace ``attribute`` with the attribute you wish to sort by)::
 
    http://example.com/geoserver/wfs?
-      service=wfs&
+      service=WFS&
       version=2.0.0&
       request=GetFeature&
       typeNames=namespace:featuretype&
@@ -264,7 +264,7 @@ Exactly which N features will be returned depends in the internal structure of t
 The default sort operation is to sort in ascending order. Some WFS servers require the sort order to be specified, even if an ascending order sort if required. In this case, append a ``+A`` to the request. Conversely, add a ``+D`` to the request to sort in descending order as follows::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -276,7 +276,7 @@ There is no obligation to use ``sortBy`` with ``count`` in a GetFeature request,
 To restrict a GetFeature request by attribute rather than feature, use the ``propertyName`` key in the form ``propertyName=attribute``. You can specify a single attribute, or multiple attributes separated by commas. To search for a single attribute in all features, the following request would be required::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -285,7 +285,7 @@ To restrict a GetFeature request by attribute rather than feature, use the ``pro
 For a single property from just one feature, use both ``featureID`` and ``propertyName``::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -295,7 +295,7 @@ For a single property from just one feature, use both ``featureID`` and ``proper
 For more than one property from a single feature, use a comma-seaprated list of values for ``propertyName``::
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -311,7 +311,7 @@ As for which corners of the bounding box to specify, the only requirement is for
 An example request involving returning features based on bounding box would be in the following format::  
 
    http://example.com/geoserver/wfs?
-     service=wfs&
+     service=WFS&
      version=2.0.0&
      request=GetFeature&
      typeNames=namespace:featuretype&
@@ -355,7 +355,7 @@ A **GetPropertyValue** operation retrieves the value of a feature property, or p
 This example retrieves the geographic content only of the features in the ``topp:states`` layer::
 
   http://example.com/geoserver/wfs?
-    service=wfs&
+    service=WFS&
     version=2.0.0&
     request=GetPropertyValue&
     typeNames=topp:states&
@@ -467,7 +467,7 @@ This example lists all stored queries on the server::
 
   http://example.com/geoserver/wfs?
     request=ListStoredQueries&
-    service=wfs&
+    service=WFS&
     version=2.0.0
 
 The same example in a POST request:
